@@ -6,6 +6,30 @@
 	<artifactId>projeto_imagens</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+
+	<properties>
+
+		<!-- Java -->
+		<java.version>1.8</java.version>
+
+		<!-- Maven -->
+		<maven-compiler-pluging.version>3.8.0</maven-compiler-pluging.version>
+
+		<!-- Servlet -->
+		<servlet.version>3.1.0</servlet.version>
+
+		<!-- JSF -->
+		<jsf.version>2.2.15</jsf.version>
+
+		<!-- MySQL -->
+		<mysql-connector-java.version>8.0.12</mysql-connector-java.version>
+
+		<!-- Primefaces -->
+		<primefaces.version>6.1</primefaces.version>
+		<primefaces-ext.version>6.1.1</primefaces-ext.version>
+
+	</properties>
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
@@ -16,48 +40,88 @@
 				</excludes>
 			</resource>
 		</resources>
+
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>${maven-compiler-pluging.version}</version>
 				<configuration>
-					<release>1.8</release>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.2.1</version>
+				<version>3.2.2</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
+
 	</build>
+
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
 	<dependencies>
+
+		<!-- MySQL Driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.12</version>
+			<version>${mysql-connector-java.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+
+		<!-- JSF -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<!-- JSF -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<!-- PrimeFaces -->
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>${primefaces-ext.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>6.2</version>
+			<version>${primefaces.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+
+		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.3</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.4.0-b180830.0359</version>
+			<version>2.3.0</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
